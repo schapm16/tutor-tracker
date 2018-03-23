@@ -5,12 +5,11 @@ PORT = 3000;
 
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
-	res.sendFile('index.html');
+app.get('/roster', function(req, res) {
+	res.sendFile(__dirname + '/public/roster.html');
 });
 
-const fileRouter = require('./routes/fileRoutes');
-app.use('/file', fileRouter);
+app.use('/file', require('./routes/fileRouter.js'));
 
 app.listen(PORT, function() {
 	console.log('Listening on Port ' + PORT);
