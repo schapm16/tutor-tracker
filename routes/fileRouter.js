@@ -1,13 +1,16 @@
 const express = require('express');
 const fileRouter = express.Router();
 
-const fileMethods = require('../logic/excel.js');
+const excelMethods = require('../logic/excelMethods.js');
 
 
-fileRouter.get('/readRoster', function(req, res) {
-	let roster = fileMethods.readRoster();
+fileRouter.get('/requestRoster', function(req, res) {
+	let roster = excelMethods.readRoster();
+	res.json(roster);
+});
 
-	res.send(roster);
+fileRouter.post('/postRoster', function(req, res) {
+	excelMethods.writeRoster(req.body.data);
 });
 
 

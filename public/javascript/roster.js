@@ -2,6 +2,8 @@
 
 function renderRoster(roster) {
 
+	$('#roster').empty();
+
 for (let i = 1; i < roster.length; i ++) {
 	$('#roster').append(`<div class="col-6">
 		<div class="card bg-light">
@@ -45,6 +47,7 @@ $(document).ready(function() {
 	requestRoster().done(function(data) {
 		console.log(data);
 		renderRoster(data);
+		// postRoster(data); For testing - Write to excel file
 	});
 
 
