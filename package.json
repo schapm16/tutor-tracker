@@ -6,7 +6,6 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
-    "xlsx": "^0.12.6",
     "xlsx-populate": "^1.14.0"
   },
   "devDependencies": {},

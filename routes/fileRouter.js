@@ -5,8 +5,9 @@ const excelMethods = require('../logic/excelMethods.js');
 
 
 fileRouter.get('/requestRoster', function(req, res) {
-	let roster = excelMethods.readRoster();
-	res.json(roster);
+	let roster = excelMethods.readRoster().then(function(roster) {
+		res.json(roster);
+	});
 });
 
 fileRouter.post('/postRoster', function(req, res) {

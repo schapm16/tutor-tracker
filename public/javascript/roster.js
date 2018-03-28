@@ -8,7 +8,7 @@ for (let i = 1; i < roster.length; i ++) {
 	$('#roster').append(`<div class="col-6">
 		<div class="card bg-light">
 		<div class="card-header text-center">
-			<span><h3>Student: ${roster[i].name}</h3></span>
+			<span><h3>Student: ${roster[i][2]}</h3></span>
 			<span class="fas fa-undo fa-sm" data-toggle="tooltip" data-placement="bottom" title="Undo Changes"></span>
 			<span class="far fa-save fa-lg" data-toggle="tooltip" data-placement="bottom" title="Save Changes"></span>
 			<span class="far fa-window-close fa-lg" data-toggle="tooltip" data-placement="bottom" title="Delete Student"></span>
@@ -17,17 +17,17 @@ for (let i = 1; i < roster.length; i ++) {
 			<form>
 				<div class="form-group row">
 					<label for="name" class="col-3">Name</label>
-					<input id="name" class="col-8 form-control" type="text" value="${roster[i].name}">
+					<input id="name" class="col-8 form-control" type="text" value="${roster[i][2]}">
 				</div>
 
 				<div class="form-group row">
 					<label for="class-code" class="col-3">Class Code</label>
-					<input id="class-code" class="col-8 form-control" type="text" value="${roster[i].classCode}">
+					<input id="class-code" class="col-8 form-control" type="text" value="${roster[i][0]}">
 				</div>
 
 				<div class="form-group row">
 					<label for="email" class="col-3">Email</label>
-					<input id="email" class="col-8 form-control" type="text" value="${roster[i].email}">
+					<input id="email" class="col-8 form-control" type="text" value="${roster[i][3]}">
 				</div>
 			</form>
 		</div>
@@ -47,7 +47,7 @@ $(document).ready(function() {
 	requestRoster().done(function(data) {
 		console.log(data);
 		renderRoster(data);
-		// postRoster(data); For testing - Write to excel file
+		// postRoster(data); //For testing - Write to excel file
 	});
 
 
