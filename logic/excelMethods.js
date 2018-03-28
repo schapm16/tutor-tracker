@@ -13,6 +13,7 @@ function styleFile(workbook) {
 
 	rosterBody.style({
 		horizontalAlignment: 'center',
+		verticalAlignment: 'center',
 		border: 'medium',
 		borderColor: 'CCCCCC'
 	});
@@ -28,6 +29,7 @@ function styleFile(workbook) {
 
 	logBody.style({
 		horizontalAlignment: 'center',
+		verticalAlignment: 'center',
 		border: 'medium',
 		borderColor: 'CCCCCC'
 	});
