@@ -1,5 +1,5 @@
-function requestRoster() {
-	return $.get('/file/requestRoster');
+function getRoster() {
+	return $.get('/file/getRoster');
 }
 
 function postRoster(data) {

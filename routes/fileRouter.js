@@ -4,7 +4,7 @@ const fileRouter = express.Router();
 const excelMethods = require('../logic/excelMethods.js');
 
 
-fileRouter.get('/requestRoster', function(req, res) {
+fileRouter.get('/getRoster', function(req, res) {
 	let roster = excelMethods.readRoster().then(function(roster) {
 		res.json(roster);
 	});
