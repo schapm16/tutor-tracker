@@ -7,9 +7,8 @@ function styleFile(workbook) {
 	console.log('Style File');
 	
 	let roster = workbook.sheet('Roster');
-	let rosterLastRow = roster.usedRange()._maxRowNumber;
-	let rosterLastCol = roster.usedRange()._maxColumnNumber;
-	let rosterBody = roster.range(2, 1,  rosterLastRow, rosterLastCol);
+	let rosterLastCell = roster.usedRange().endCell();
+	let rosterBody = roster.range('A2', rosterLastCell);
 
 	rosterBody.style({
 		horizontalAlignment: 'center',
@@ -18,14 +17,13 @@ function styleFile(workbook) {
 		borderColor: 'CCCCCC'
 	});
 
-	for (let i = 1; i <= rosterLastRow; i++) {
+	for (let i = 1; i <= rosterLastCell.rowNumber(); i++) {
 		roster.row(i).height(30);
 	}
 
 	let log = workbook.sheet('Log');
-	let logLastRow = log.usedRange()._maxRowNumber;
-	let logLastCol = log.usedRange()._maxColumnNumber;
-	let logBody = log.range(2, 1, logLastRow, logLastCol);
+	let logLastCell = roster.usedRange().endCell();
+	let logBody = log.range('A2', logLastCell);
 
 	logBody.style({
 		horizontalAlignment: 'center',
@@ -34,7 +32,7 @@ function styleFile(workbook) {
 		borderColor: 'CCCCCC'
 	});
 
-	for (let i = 1; i <= logLastRow; i++) {
+	for (let i = 1; i <= logLastCell.rowNumber(); i++) {
 		log.row(i).height(15);
 	}
 
@@ -70,7 +68,13 @@ function writeRoster(data) {
 	console.log('Write Roster');
 	parseFile()
 		.then(function(workbook) {
-			workbook.sheet('Roster').usedRange().value(data);
+			let roster = workbook.sheet('Roster');
+			let rosterLastCell = roster.usedRange().endCell();
+			let rosterBody = roster.range('A2', rosterLastCell);
+
+			rosterBody.clear();
+			roster.cell('A1').value(data);
+			
 			return workbook;
 		})
 		.then(function(workbook) {
