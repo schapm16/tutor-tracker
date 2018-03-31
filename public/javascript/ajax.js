@@ -1,11 +1,11 @@
-function getRoster() {
-	return $.get('/file/getRoster');
+function requestRoster() {
+	return $.get('/file/requestRoster');
 }
 
-function postRoster(data) {
+function writeRoster(data) {
 	return $.ajax({
 		method: 'POST',
-		url: '/file/postRoster', 
+		url: '/file/writeRoster', 
 		data: JSON.stringify({data: data}),
 		traditional: 'true',
 		contentType: 'application/json'
