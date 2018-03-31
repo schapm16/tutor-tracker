@@ -66,7 +66,7 @@ function readRoster() {
 // Updates and writes all values to Roster worksheet.
 function writeRoster(data) {
 	console.log('Write Roster');
-	parseFile()
+	return parseFile()
 		.then(function(workbook) {
 			let roster = workbook.sheet('Roster');
 			let rosterLastCell = roster.usedRange().endCell();
