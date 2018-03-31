@@ -9,9 +9,9 @@ for (let i = 1; i < roster.length; i ++) {
 		<div class="card bg-light">
 		<div class="card-header text-center">
 			<span><h3>Student: ${roster[i][2]}</h3></span>
-			<span class="fas fa-undo fa-sm" data-toggle="tooltip" data-placement="bottom" title="Undo Changes"></span>
-			<span class="far fa-save fa-lg" data-toggle="tooltip" data-placement="bottom" title="Save Changes"></span>
-			<span class="far fa-window-close fa-lg" data-toggle="tooltip" data-placement="bottom" title="Delete Student"></span>
+			<span class="fas fa-undo fa-sm" data-action="undo" data-index="${i}" data-toggle="tooltip" data-placement="bottom" title="Undo Changes"></span>
+			<span class="far fa-save fa-lg" data-action="save" data-index="${i} data-toggle="tooltip" data-placement="bottom" title="Save Changes"></span>
+			<span class="far fa-window-close fa-lg" data-action="delete" data-index="${i}" data-toggle="tooltip" data-placement="bottom" title="Delete Student"></span>
 		</div>
 		<div class="card-body">
 			<form>
@@ -36,19 +36,39 @@ for (let i = 1; i < roster.length; i ++) {
 		`);
 
 	$('[data-toggle="tooltip"]').tooltip();
+	}
 }
 
-
-}
 
 $(document).ready(function() {
 	console.log('Roster script running');
-	
-	requestRoster().done(function(data) {
+	let currentData;
+
+	requestRoster()
+		.done(function(data) {
 		console.log(data);
 		renderRoster(data);
-		// postRoster(data); //For testing - Write to excel file
+		currentData = data;
+		});
+
+	$(document).on('click', 'span[data-action="undo"]', function(event) {
+		
 	});
+
+	$(document).on('click', 'span[data-action="save"]', function(event) {
+	console.log(event);
+	});
+
+	$(document).on('click', 'span[data-action="delete"]', function(event) {
+		let dataIndex = parseInt(event.target.dataset.index);
+		currentData.splice(dataIndex, 1);
+		writeRoster(currentData)
+			.done(function() {
+				location.reload(true);
+		});	
+	});
+
+	
 
 
 });
