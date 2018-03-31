@@ -4,14 +4,17 @@ const fileRouter = express.Router();
 const excelMethods = require('../logic/excelMethods.js');
 
 
-fileRouter.get('/getRoster', function(req, res) {
+fileRouter.get('/requestRoster', function(req, res) {
 	let roster = excelMethods.readRoster().then(function(roster) {
 		res.json(roster);
 	});
 });
 
-fileRouter.post('/postRoster', function(req, res) {
-	excelMethods.writeRoster(req.body.data);
+fileRouter.post('/writeRoster', function(req, res) {
+	excelMethods.writeRoster(req.body.data)
+		.then(function() {
+			res.sendStatus(200);
+		});
 });
 
 
