@@ -64,8 +64,13 @@ $(document).ready(function() {
 		currentData.splice(dataIndex, 1);
 		writeRoster(currentData)
 			.done(function() {
-				location.reload(true);
-		});	
+				requestRoster()
+					.done(function(data) {
+					console.log(data);
+					renderRoster(data);
+					currentData = data;
+					});
+			});	
 	});
 
 	
