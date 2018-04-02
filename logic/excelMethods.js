@@ -81,7 +81,7 @@ function writeRoster(data) {
 			return styleFile(workbook);
 		})
 		.then(function(workbook) {
-			writeFile(workbook);
+			return writeFile(workbook);
 		})
 		.catch(function(error) {
 			console.log(error);
