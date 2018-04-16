@@ -13,19 +13,45 @@ for (let i = 1; i < roster.length; i ++) {
 		</div>
 		<div class="card-body">
 			<form>
+
 				<div class="form-group row">
-					<label for="name" class="col-3">Name</label>
-					<input id="name" class="col-8 form-control" data-index="${i}" type="text" value="${roster[i][2]}" >
+					<label for="class-code" class="col-4">Class Code</label>
+					<input id="class-code" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][0]}" >
 				</div>
 
 				<div class="form-group row">
-					<label for="class-code" class="col-3">Class Code</label>
-					<input id="class-code" class="col-8 form-control" data-index="${i}" type="text" value="${roster[i][0]}" >
+					<label for="grad-date" class="col-4">Graduation Date</label>
+					<input id="grad-date" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][1]}" >
 				</div>
 
 				<div class="form-group row">
-					<label for="email" class="col-3">Email</label>
-					<input id="email" class="col-8 form-control" data-index="${i}" type="text" value="${roster[i][3]}" >
+					<label for="name" class="col-4">Name</label>
+					<input id="name" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][2]}" >
+				</div>
+
+				<div class="form-group row">
+					<label for="email" class="col-4">Email</label>
+					<input id="email" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][3]}" >
+				</div>
+
+				<div class="form-group row">
+					<label for="github" class="col-4">GitHub</label>
+					<input id="github" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][4]}" >
+				</div>
+
+				<div class="form-group row">
+					<label for="topics" class="col-4">Topics</label>
+					<input id="topics" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][5]}" >
+				</div>
+
+				<div class="form-group row">
+					<label for="timezone" class="col-4">Timezone</label>
+					<input id="timezone" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][6]}" >
+				</div>
+
+				<div class="form-group row">
+					<label for="intro-date" class="col-4">Intro Sent On </label>
+					<input id="intro-date" class="col-7 form-control" data-index="${i}" type="text" value="${roster[i][7]}" >
 				</div>
 			</form>
 		</div>
