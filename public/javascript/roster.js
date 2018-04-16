@@ -88,9 +88,11 @@ $(document).ready(function() {
 
 	$(document).on('click', 'span[data-action="save"]', function() {
 		let dataIndex = parseInt($(this).attr('data-index'));
-		currentData[dataIndex][2] = $(`#name[data-index="${dataIndex}"`).val();
-		currentData[dataIndex][0] = $(`#class-code[data-index="${dataIndex}"`).val();
-		currentData[dataIndex][3] = $(`#email[data-index="${dataIndex}"`).val();
+		let inputs = $(`input[data-index="${dataIndex}"]`);
+		for (let i = 0; i < inputs.length; i++) {
+			console.dir(inputs);
+			currentData[dataIndex][i] = inputs.eq(i).val();
+		}
 		writeRoster(currentData)
 			.done(function() {
 				requestRoster()
@@ -115,8 +117,5 @@ $(document).ready(function() {
 					});
 			});	
 	});
-
-	
-
 
 });
