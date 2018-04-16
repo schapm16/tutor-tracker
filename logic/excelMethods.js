@@ -59,7 +59,10 @@ function writeFile(workbook) {
 function readRoster() {
 	console.log('Read Roster');
 	return parseFile().then(function(workbook) {
-		return workbook.sheet('Roster').usedRange().value();
+		let roster = workbook.sheet('Roster').usedRange().value();
+		// Excel represents dates as integers.  Convert integers to date format.
+		return dateConvert(roster);
+		
 	});
 }
 
@@ -99,6 +102,24 @@ function writeLog() {
 }
 
 // === End Worksheet functions === //
+
+// === Utility Functions === //
+
+// Takes 2D array of data.  Finds all entries of type 'number' 
+// and converts to date format
+function dateConvert(data2Darray) {
+	return data2Darray.map(function(inner1Darray) {
+			return inner1Darray.map(function(element) {
+				if (typeof element === 'number') {
+					return xlsxPopulate.numberToDate(element);
+				} else {
+					return element;
+				}
+			});
+		});
+}
+
+// === End Utility Functions === //
 
 
 module.exports = {
