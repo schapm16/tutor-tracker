@@ -60,7 +60,7 @@ function readRoster() {
 	console.log('Read Roster');
 	return parseFile().then(function(workbook) {
 		let roster = workbook.sheet('Roster').usedRange().value();
-		// Excel represents dates as integers.  Convert integers to date format.
+		// Excel represents dates as integers.  Convert integers to Date.
 		return dateConvert(roster);
 		
 	});
@@ -105,8 +105,8 @@ function writeLog() {
 
 // === Utility Functions === //
 
-// Takes 2D array of data.  Finds all entries of type 'number' 
-// and converts to date format
+// Takes 2D array of data.  Finds all entries of type Number
+// and converts to Date
 function dateConvert(data2Darray) {
 	return data2Darray.map(function(inner1Darray) {
 			return inner1Darray.map(function(element) {
